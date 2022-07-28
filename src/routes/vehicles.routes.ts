@@ -11,6 +11,7 @@ export const vehicleRouter = () => {
     expressYupMiddleware({ schemaValidator: createVehicleSchema }),
     VehicleController.create
   );
+  router.get("", VehicleController.index);
 
   return router;
 };
