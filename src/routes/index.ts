@@ -1,5 +1,7 @@
-import Router from "express";
+import { Express } from "express";
+import { vehicleRouter } from "./vehicles.routes";
 
-const routes = Router();
 
-export default routes;
+export const appRoutes = (app: Express) => {
+    app.use('/vehicles', vehicleRouter())
+}
