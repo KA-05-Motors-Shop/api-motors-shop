@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
+
+import { AppDataSource } from "../../data-source";
+import Vehicle from "../../models/Vehicle";
 import createVehicleService from "../../services/vehicles/createVehicle.service";
+import ListCarsService from "../../services/vehicles/getVehicle.service";
 
 class VehicleController {
   static async create(req: Request, res: Response) {
@@ -27,8 +31,14 @@ class VehicleController {
       year,
     });
 
-    return res.status(201).json(newVehicle)
+    return res.status(201).json(newVehicle);
+  }
+
+  static async index(req: Request, res: Response) {
+    const listCars = new ListCarsService();
+    const cars = await listCars.execute();
+    return res.json(cars);
   }
 }
 
-export default VehicleController
+export default VehicleController;

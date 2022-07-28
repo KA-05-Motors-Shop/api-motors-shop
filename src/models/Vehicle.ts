@@ -51,4 +51,4 @@ class Vehicle {
   published: boolean;
 }
 
-export default Vehicle
+export default Vehicle;
