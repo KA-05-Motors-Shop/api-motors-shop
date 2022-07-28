@@ -24,7 +24,7 @@ class Vehicle {
   description: string;
 
   @Column()
-  type_of_veihcle: string;
+  type_of_vehicle: string;
 
   @Column()
   cover_image: string;
