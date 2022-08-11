@@ -18,7 +18,6 @@ class UserController {
       complement,
       account_type,
       password,
-      confirm_password,
     } = req.body;
 
     const newUser = await createUserService({
@@ -36,7 +35,6 @@ class UserController {
       complement,
       account_type,
       password,
-      confirm_password,
     });
 
     return res.status(201).json(newUser);

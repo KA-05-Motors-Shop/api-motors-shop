@@ -46,9 +46,6 @@ class User {
 
   @Column()
   password: string;
-
-  @Column()
-  confirm_password: string;
 }
 
 export default User;
