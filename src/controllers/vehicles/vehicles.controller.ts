@@ -13,6 +13,11 @@ class VehicleController {
       type_of_vehicle,
       cover_image,
       gallery_image,
+      gallery_image2,
+      gallery_image3,
+      gallery_image4,
+      gallery_image5,
+      gallery_image6,
     } = req.body;
 
     const newVehicle = await createVehicleService({
@@ -21,14 +26,19 @@ class VehicleController {
       cover_image,
       description,
       gallery_image,
+      gallery_image2,
+      gallery_image3,
+      gallery_image4,
+      gallery_image5,
+      gallery_image6,
       km,
       price,
       type_of_vehicle,
       year,
     });
 
-    return res.status(201).json(newVehicle)
+    return res.status(201).json(newVehicle);
   }
 }
 
-export default VehicleController
+export default VehicleController;
