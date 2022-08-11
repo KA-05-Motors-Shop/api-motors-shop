@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 
 import createVehicleService from "../../services/vehicles/createVehicle.service";
 import deleteVehicleService from "../../services/vehicles/deleteVehicle.service";
+import getOneVechileService from "../../services/vehicles/getOneVehicle.service";
 import listVehiclesService from "../../services/vehicles/getVehicle.service";
 import ListVehiclesService from "../../services/vehicles/getVehicle.service";
 import updateVehilceService from "../../services/vehicles/updateVehicle.service";
@@ -49,6 +50,14 @@ class VehicleController {
     const vehicles = await listVehiclesService();
 
     return res.json(vehicles);
+  }
+
+  static async show(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const vehicle = await getOneVechileService(id);
+
+    return res.json(vehicle);
   }
 
   static async update(req: Request, res: Response) {

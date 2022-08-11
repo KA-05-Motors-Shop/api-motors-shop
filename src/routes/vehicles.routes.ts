@@ -13,6 +13,7 @@ export const vehicleRouter = () => {
     VehicleController.create
   );
   router.get("", VehicleController.index);
+  router.get("/:id", VehicleController.show);
 
   router.patch(
     "/:id",
