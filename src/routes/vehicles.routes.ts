@@ -20,5 +20,7 @@ export const vehicleRouter = () => {
     VehicleController.update
   );
 
+  router.delete("/:id", VehicleController.delete);
+
   return router;
 };
