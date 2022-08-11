@@ -22,13 +22,11 @@ interface VehicleProps {
 const createVehicleService = async (data: VehicleProps) => {
   const vehicleRepository = AppDataSource.getRepository(Vehicle);
 
-  const ad = await vehicleRepository.find()
+  const ad = await vehicleRepository.find();
 
-  const vehicle = ad.find(({title}) => title === data.title)
+  const vehicle = ad.find(({ title }) => title === data.title);
 
-  if (vehicle) {
-    throw new AppError ('This title already exists', 409)
-  }
+  if (vehicle) throw new AppError("This title already exists", 409);
 
   const newVehicle = new Vehicle();
   newVehicle.title = data.title;
