@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 
 import createVehicleService from "../../services/vehicles/createVehicle.service";
 import listVehiclesService from "../../services/vehicles/getVehicle.service";
-import ListVehiclesService from "../../services/vehicles/getVehicle.service";
 
 class VehicleController {
   static async create(req: Request, res: Response) {
@@ -35,7 +34,7 @@ class VehicleController {
 
   static async index(req: Request, res: Response) {
     const vehicles = await listVehiclesService();
-    
+
     return res.json(vehicles);
   }
 }

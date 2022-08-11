@@ -1,3 +1,4 @@
+import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import createUserService from "../../services/users/createUser.service";
 
@@ -27,7 +28,7 @@ class UserController {
       password,
     });
 
-    return res.status(201).json(newUser);
+    return res.status(201).json(instanceToPlain(newUser));
   }
 }
 

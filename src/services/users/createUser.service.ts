@@ -2,18 +2,22 @@ import { hash } from "bcrypt";
 import { AppDataSource } from "../../data-source";
 import AppError from "../../errors/AppError";
 import { UserProps } from "../../interfaces/users";
-import Address from "../../models/Addresses";
+import Address from "../../models/Address";
 import User from "../../models/User";
 
 const createUserService = async (data: UserProps) => {
   const userRepository = AppDataSource.getRepository(User);
   const addressRepository = AppDataSource.getRepository(Address);
 
-  const checkUserExists = await userRepository.findOne({
+  const checkCPFExists = await userRepository.findOne({
     where: { cpf: data.cpf },
   });
 
-  if (checkUserExists) {
+  const checkEmailExists = await userRepository.findOne({
+    where: { email: data.email },
+  });
+
+  if (checkCPFExists || checkEmailExists) {
     throw new AppError("User already exists.", 401);
   }
 
@@ -32,7 +36,11 @@ const createUserService = async (data: UserProps) => {
   await addressRepository.save(newAddress);
 
   const new_user_address = await addressRepository.findOne({
-    where: { cep: newAddress.cep },
+    where: {
+      cep: newAddress.cep,
+      number: newAddress.number,
+      complement: newAddress.complement,
+    },
   });
 
   if (!new_user_address) {

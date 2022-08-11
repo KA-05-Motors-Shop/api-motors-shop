@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import {
   Column,
   Entity,
@@ -5,7 +6,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import Address from "./Addresses";
+import Address from "./Address";
 
 @Entity("users")
 class User {
@@ -35,6 +36,7 @@ class User {
   })
   account_type: string;
 
+  @Exclude()
   @Column()
   password: string;
 
