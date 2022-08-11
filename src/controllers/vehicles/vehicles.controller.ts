@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import createVehicleService from "../../services/vehicles/createVehicle.service";
+import deleteVehicleService from "../../services/vehicles/deleteVehicle.service";
 import listVehiclesService from "../../services/vehicles/getVehicle.service";
 import ListVehiclesService from "../../services/vehicles/getVehicle.service";
 import updateVehilceService from "../../services/vehicles/updateVehicle.service";
@@ -67,7 +68,7 @@ class VehicleController {
       gallery_image4,
       gallery_image5,
       gallery_image6,
-      published
+      published,
     } = req.body;
 
     const vehicleUpdate = await updateVehilceService(id, {
@@ -85,10 +86,18 @@ class VehicleController {
       price,
       type_of_vehicle,
       year,
-      published
+      published,
     });
 
-    return res.json(vehicleUpdate)
+    return res.json(vehicleUpdate);
+  }
+
+  static async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    await deleteVehicleService(id);
+
+    return res.status(204).json();
   }
 }
 
