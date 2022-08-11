@@ -1,13 +1,13 @@
 import { AppDataSource } from "../../data-source";
 import Vehicle from "../../models/Vehicle";
 
-const listVehiclesService = async  () : Promise<Vehicle[]> => {
-  
-    const vehiclesRepository = AppDataSource.getRepository(Vehicle);
-    const vehicles = await vehiclesRepository.find();
+const listVehiclesService = async () => {
+  const vehiclesRepository = AppDataSource.getRepository(Vehicle);
+  const vehicles = await vehiclesRepository.find();
 
-    return vehicles
+  const availableVehicles = vehicles.find(({ published }) => published);
 
-}
+  return availableVehicles;
+};
 
-export default listVehiclesService
+export default listVehiclesService;
