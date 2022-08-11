@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import Address from "./Addresses";
 
 @Entity("users")
 class User {
@@ -23,29 +30,21 @@ class User {
   @Column({ length: 500 })
   description: string;
 
-  @Column()
-  cep: number;
-
-  @Column()
-  state: string;
-
-  @Column()
-  city: string;
-
-  @Column()
-  street: string;
-
-  @Column()
-  number: number;
-
-  @Column()
-  complement: string;
-
-  @Column()
+  @Column({
+    default: "Comprador",
+  })
   account_type: string;
 
   @Column()
   password: string;
+
+  @OneToMany((type) => Address, (address) => address.user, {
+    eager: true,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  @JoinColumn()
+  addresses: Address[];
 }
 
 export default User;
