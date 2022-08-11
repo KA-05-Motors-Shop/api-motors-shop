@@ -5,7 +5,7 @@ const listVehiclesService = async () => {
   const vehiclesRepository = AppDataSource.getRepository(Vehicle);
   const vehicles = await vehiclesRepository.find();
 
-  const availableVehicles = vehicles.find(({ published }) => published);
+  const availableVehicles = vehicles.filter(({ published }) => published);
 
   return availableVehicles;
 };
