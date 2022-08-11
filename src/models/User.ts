@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import Address from "./Addresses";
@@ -38,13 +38,13 @@ class User {
   @Column()
   password: string;
 
-  @OneToMany((type) => Address, (address) => address.user, {
+  @OneToOne(() => Address, {
     eager: true,
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
   @JoinColumn()
-  addresses: Address[];
+  address: Address;
 }
 
 export default User;

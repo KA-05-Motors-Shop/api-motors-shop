@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import User from "./User";
@@ -11,10 +11,6 @@ import User from "./User";
 class Address {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
-
-  @ManyToOne((type) => User, (user) => user.addresses)
-  @JoinColumn()
-  user: User;
 
   @Column()
   cep: number;
