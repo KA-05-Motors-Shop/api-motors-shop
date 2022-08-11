@@ -1,4 +1,5 @@
 import { AppDataSource } from "../../data-source";
+import AppError from "../../errors/AppError";
 import Vehicle from "../../models/Vehicle";
 
 interface VehicleProps {
@@ -20,6 +21,12 @@ interface VehicleProps {
 
 const createVehicleService = async (data: VehicleProps) => {
   const vehicleRepository = AppDataSource.getRepository(Vehicle);
+
+  const ad = await vehicleRepository.find();
+
+  const vehicle = ad.find(({ title }) => title === data.title);
+
+  if (vehicle) throw new AppError("This title already exists", 409);
 
   const newVehicle = new Vehicle();
   newVehicle.title = data.title;

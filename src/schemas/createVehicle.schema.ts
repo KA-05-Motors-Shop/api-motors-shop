@@ -13,6 +13,11 @@ export const createVehicleSchema = {
         type_of_vehicle: yup.string().required("This field is required"),
         cover_image: yup.string().url().required("This field is required"),
         gallery_image: yup.string().url().required("This field is required"),
+        gallery_image2: yup.string().url(),
+        gallery_image3: yup.string().url(),
+        gallery_image4: yup.string().url(),
+        gallery_image5: yup.string().url(),
+        gallery_image6: yup.string().url()
       }),
       validateOptions: {
         abortEarly: false,
