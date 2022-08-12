@@ -3,9 +3,9 @@ import { IAddressCreate } from "../addresses";
 export interface IUserCreate {
   name: string;
   email: string;
-  cpf: number;
-  cel: number;
-  birth_date: number;
+  cpf: string;
+  cel: string;
+  birth_date: string;
   description: string;
   address: IAddressCreate;
   account_type: string;
@@ -19,8 +19,8 @@ export interface IUserID {
 export interface IUserUpdate {
   name?: string;
   email?: string;
-  cel?: number;
-  birth_date?: number;
+  cel?: string;
+  birth_date?: string;
   description?: string;
   password?: string;
 }

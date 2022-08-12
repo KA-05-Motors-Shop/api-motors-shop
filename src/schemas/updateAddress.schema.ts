@@ -4,11 +4,11 @@ const updateAddressSchema = {
   schema: {
     body: {
       yupSchema: yup.object().shape({
-        cep: yup.number(),
+        cep: yup.string(),
         state: yup.string(),
         city: yup.string(),
         street: yup.string(),
-        number: yup.number(),
+        number: yup.string(),
         complement: yup.string(),
       }),
       validateOptions: {

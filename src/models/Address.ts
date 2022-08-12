@@ -1,11 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from "typeorm";
-import User from "./User";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("addresses")
 class Address {
@@ -13,7 +6,7 @@ class Address {
   readonly id: string;
 
   @Column()
-  cep: number;
+  cep: string;
 
   @Column()
   state: string;
@@ -25,7 +18,7 @@ class Address {
   street: string;
 
   @Column()
-  number: number;
+  number: string;
 
   @Column({ nullable: true })
   complement: string;

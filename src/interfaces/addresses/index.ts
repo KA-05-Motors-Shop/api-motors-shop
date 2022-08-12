@@ -1,17 +1,17 @@
 export interface IAddressCreate {
-  cep: number;
+  cep: string;
   state: string;
   city: string;
   street: string;
-  number: number;
+  number: string;
   complement: string;
 }
 
 export interface IAddressUpdate {
-  cep?: number;
+  cep?: string;
   state?: string;
   city?: string;
   street?: string;
-  number?: number;
+  number?: string;
   complement?: string;
 }

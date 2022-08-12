@@ -22,13 +22,13 @@ class User {
   email: string;
 
   @Column()
-  cpf: number;
+  cpf: string;
 
   @Column()
-  cel: number;
+  cel: string;
 
   @Column()
-  birth_date: number;
+  birth_date: string;
 
   @Column({ length: 500 })
   description: string;
@@ -50,7 +50,7 @@ class User {
   @JoinColumn()
   address: Address;
 
-  @OneToMany((type) => Vehicle, (vehicle) => vehicle.user, {
+  @OneToMany(() => Vehicle, (vehicle) => vehicle.user, {
     eager: true,
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
