@@ -2,6 +2,7 @@ import { Router } from "express";
 import { expressYupMiddleware } from "express-yup-middleware";
 import UserController from "../controllers/users/users.controller";
 import createUserSchema from "../schemas/createUser.schema";
+import updateUserSchema from "../schemas/updateUser.schema";
 
 const router = Router();
 
@@ -13,6 +14,11 @@ export const userRouter = () => {
   );
   router.get("", UserController.index);
   router.get("/:user_id", UserController.show);
+  router.patch(
+    "/:user_id",
+    expressYupMiddleware({ schemaValidator: updateUserSchema }),
+    UserController.update
+  );
   router.delete("/:user_id", UserController.delete);
 
   return router;
