@@ -66,7 +66,7 @@ class UserController {
       password,
     });
 
-    return res.status(200).json(instanceToPlain(userUpdated));
+    return res.status(200).json(userUpdated);
   }
 
   static async delete(req: Request, res: Response) {

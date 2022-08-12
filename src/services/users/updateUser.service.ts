@@ -27,7 +27,9 @@ const updateUserService = async (id: string, data: IUserUpdate) => {
     id,
   });
 
-  return userUpdated;
+  const { password, ...updatedUserWithoutPassword } = userUpdated;
+
+  return updatedUserWithoutPassword;
 };
 
 export default updateUserService;
