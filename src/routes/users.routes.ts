@@ -12,6 +12,7 @@ export const userRouter = () => {
     UserController.create
   );
   router.get("", UserController.index);
+  router.get("/:user_id", UserController.show);
 
   return router;
 };
