@@ -18,3 +18,7 @@ export interface AddressProps {
   number: number;
   complement: string;
 }
+
+export interface iUserID {
+  user_id: string;
+}

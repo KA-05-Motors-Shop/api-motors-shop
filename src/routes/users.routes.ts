@@ -13,6 +13,7 @@ export const userRouter = () => {
   );
   router.get("", UserController.index);
   router.get("/:user_id", UserController.show);
+  router.delete("/:user_id", UserController.delete);
 
   return router;
 };

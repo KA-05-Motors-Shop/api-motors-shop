@@ -2,6 +2,7 @@ import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import { string } from "yup";
 import createUserService from "../../services/users/createUser.service";
+import deleteUserService from "../../services/users/deleteUser.service";
 import listUsersService from "../../services/users/listUsers.service";
 import showUserService from "../../services/users/showUser.service";
 
@@ -46,6 +47,14 @@ class UserController {
     const user = await showUserService({ user_id });
 
     return res.status(200).json(instanceToPlain(user));
+  }
+
+  static async delete(req: Request, res: Response) {
+    const { user_id } = req.params;
+
+    await deleteUserService({ user_id });
+
+    return res.status(200).json({ message: "User deleted successfully." });
   }
 }
 

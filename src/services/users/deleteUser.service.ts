@@ -3,7 +3,7 @@ import AppError from "../../errors/AppError";
 import { iUserID } from "../../interfaces/users";
 import User from "../../models/User";
 
-const showUserService = async ({ user_id }: iUserID) => {
+const deleteUserService = async ({ user_id }: iUserID) => {
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOne({ where: { id: user_id } });
@@ -12,7 +12,9 @@ const showUserService = async ({ user_id }: iUserID) => {
     throw new AppError("User not found.", 401);
   }
 
-  return user;
+  await userRepository.delete(user.id);
+
+  return true;
 };
 
-export default showUserService;
+export default deleteUserService;
