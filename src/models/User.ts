@@ -3,10 +3,12 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import Address from "./Address";
+import Vehicle from "./Vehicle";
 
 @Entity("users")
 class User {
@@ -47,6 +49,14 @@ class User {
   })
   @JoinColumn()
   address: Address;
+
+  @OneToMany((type) => Vehicle, (vehicle) => vehicle.user, {
+    eager: true,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  @JoinColumn()
+  vehicles: Vehicle[];
 }
 
 export default User;
