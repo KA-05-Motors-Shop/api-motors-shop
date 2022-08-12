@@ -1,20 +1,26 @@
-export interface UserProps {
+import { IAddressCreate } from "../addresses";
+
+export interface IUserCreate {
   name: string;
   email: string;
-  cpf: number;
-  cel: number;
-  birth_date: number;
+  cpf: string;
+  cel: string;
+  birth_date: string;
   description: string;
-  address: AddressProps;
+  address: IAddressCreate;
   account_type: string;
   password: string;
 }
 
-export interface AddressProps {
-  cep: number;
-  state: string;
-  city: string;
-  street: string;
-  number: number;
-  complement: string;
+export interface IUserID {
+  user_id: string;
+}
+
+export interface IUserUpdate {
+  name?: string;
+  email?: string;
+  cel?: string;
+  birth_date?: string;
+  description?: string;
+  password?: string;
 }

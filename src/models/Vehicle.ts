@@ -1,9 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import User from "./User";
 
 @Entity("vehicles")
 class Vehicle {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
+
+  @ManyToOne((type) => User, (user) => user.vehicles)
+  @JoinColumn()
+  user: User;
 
   @Column()
   title: string;

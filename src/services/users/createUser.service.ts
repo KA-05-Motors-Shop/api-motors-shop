@@ -1,11 +1,11 @@
 import { hash } from "bcrypt";
 import { AppDataSource } from "../../data-source";
 import AppError from "../../errors/AppError";
-import { UserProps } from "../../interfaces/users";
+import { IUserCreate } from "../../interfaces/users";
 import Address from "../../models/Address";
 import User from "../../models/User";
 
-const createUserService = async (data: UserProps) => {
+const createUserService = async (data: IUserCreate) => {
   const userRepository = AppDataSource.getRepository(User);
   const addressRepository = AppDataSource.getRepository(Address);
 
@@ -17,9 +17,8 @@ const createUserService = async (data: UserProps) => {
     where: { email: data.email },
   });
 
-  if (checkCPFExists || checkEmailExists) {
+  if (checkCPFExists || checkEmailExists)
     throw new AppError("User already exists.", 401);
-  }
 
   const hashedPassword = await hash(data.password, 8);
 
@@ -43,9 +42,7 @@ const createUserService = async (data: UserProps) => {
     },
   });
 
-  if (!new_user_address) {
-    throw new AppError("Address not found.", 404);
-  }
+  if (!new_user_address) throw new AppError("Address not found.", 404);
 
   const newUser = new User();
   newUser.name = data.name;

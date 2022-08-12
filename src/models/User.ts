@@ -3,10 +3,12 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import Address from "./Address";
+import Vehicle from "./Vehicle";
 
 @Entity("users")
 class User {
@@ -20,13 +22,13 @@ class User {
   email: string;
 
   @Column()
-  cpf: number;
+  cpf: string;
 
   @Column()
-  cel: number;
+  cel: string;
 
   @Column()
-  birth_date: number;
+  birth_date: string;
 
   @Column({ length: 500 })
   description: string;
@@ -47,6 +49,14 @@ class User {
   })
   @JoinColumn()
   address: Address;
+
+  @OneToMany(() => Vehicle, (vehicle) => vehicle.user, {
+    eager: true,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  @JoinColumn()
+  vehicles: Vehicle[];
 }
 
 export default User;
