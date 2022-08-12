@@ -1,6 +1,5 @@
 import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
-import { string } from "yup";
 import AppError from "../../errors/AppError";
 import createUserService from "../../services/users/createUser.service";
 import deleteUserService from "../../services/users/deleteUser.service";

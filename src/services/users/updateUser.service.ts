@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { AppDataSource } from "../../data-source";
 import AppError from "../../errors/AppError";
 import { IUserUpdate } from "../../interfaces/users";
@@ -16,6 +17,10 @@ const updateUserService = async (id: string, data: IUserUpdate) => {
 
   if (checkEmailExists && checkEmailExists.id != user.id)
     throw new AppError("E-mail already in use.", 401);
+
+  if (data.password) {
+    data.password = await hash(data.password, 8);
+  }
 
   const userUpdated = await userRepository.save({
     ...data,
