@@ -11,7 +11,7 @@ export const userRouter = () => {
     expressYupMiddleware({ schemaValidator: createUserSchema }),
     UserController.create
   );
-  // router.get("", UserController.index);
+  router.get("", UserController.index);
 
   return router;
 };
