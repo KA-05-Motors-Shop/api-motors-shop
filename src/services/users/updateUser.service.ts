@@ -9,7 +9,7 @@ const updateUserService = async (id: string, data: IUserUpdate) => {
 
   const user = await userRepository.findOne({ where: { id } });
 
-  if (!user) throw new AppError("User not found.", 401);
+  if (!user) throw new AppError("User not found.", 404);
 
   const checkEmailExists = await userRepository.findOne({
     where: { email: data.email },

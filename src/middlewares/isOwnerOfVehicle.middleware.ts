@@ -11,7 +11,7 @@ const IsOwner = async (req: Request, res: Response, next: NextFunction) => {
 
   const user = await userRepository.findOne({ where: { id: userId } });
 
-  if (!user) throw new AppError("Vehicle not found");
+  if (!user) throw new AppError("User not found");
 
   const vehicle = user.vehicles.find((ad) => ad.id === id);
 

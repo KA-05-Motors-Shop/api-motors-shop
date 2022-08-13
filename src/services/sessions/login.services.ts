@@ -3,11 +3,7 @@ import { sign } from "jsonwebtoken";
 import { AppDataSource } from "../../data-source";
 import AppError from "../../errors/AppError";
 import User from "../../models/User";
-
-interface LoginProps {
-  email: string;
-  password: string;
-}
+import { LoginProps } from "../../interfaces/sessions/";
 
 const loginService = async (data: LoginProps) => {
   const userRepository = AppDataSource.getRepository(User);
