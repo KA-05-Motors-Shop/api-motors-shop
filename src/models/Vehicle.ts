@@ -12,7 +12,11 @@ class Vehicle {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @ManyToOne((type) => User, (user) => user.vehicles)
+  @ManyToOne((type) => User, (user) => user.vehicles, {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   @JoinColumn()
   user: User;
 

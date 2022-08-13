@@ -1,8 +1,10 @@
 import { AppDataSource } from "../../data-source";
 import AppError from "../../errors/AppError";
+import User from "../../models/User";
 import Vehicle from "../../models/Vehicle";
 
 interface VehicleProps {
+  owner: string;
   title: string;
   type_of_ad: string;
   year: number;
@@ -21,6 +23,11 @@ interface VehicleProps {
 
 const createVehicleService = async (data: VehicleProps) => {
   const vehicleRepository = AppDataSource.getRepository(Vehicle);
+  const userRepository = AppDataSource.getRepository(User);
+
+  const user = await userRepository.findOne({ where: { id: data.owner } });
+
+  if (!user) throw new AppError("User not found", 404)
 
   const ad = await vehicleRepository.find();
 
@@ -43,8 +50,7 @@ const createVehicleService = async (data: VehicleProps) => {
   newVehicle.gallery_image4 = data.gallery_image4!;
   newVehicle.gallery_image5 = data.gallery_image5!;
   newVehicle.gallery_image6 = data.gallery_image6!;
-
-  vehicleRepository.create(newVehicle);
+  newVehicle.user = user
 
   await vehicleRepository.save(newVehicle);
 

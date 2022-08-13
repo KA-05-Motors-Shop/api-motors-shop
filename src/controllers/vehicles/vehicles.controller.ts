@@ -24,6 +24,7 @@ class VehicleController {
       gallery_image4,
       gallery_image5,
       gallery_image6,
+      owner
     } = req.body;
 
     const newVehicle = await createVehicleService({
@@ -41,6 +42,7 @@ class VehicleController {
       price,
       type_of_vehicle,
       year,
+      owner
     });
 
     return res.status(201).json(newVehicle);
