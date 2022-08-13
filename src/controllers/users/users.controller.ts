@@ -1,6 +1,4 @@
-import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
-import AppError from "../../errors/AppError";
 import createUserService from "../../services/users/createUser.service";
 import deleteUserService from "../../services/users/deleteUser.service";
 import listUsersService from "../../services/users/listUsers.service";
@@ -33,13 +31,13 @@ class UserController {
       password,
     });
 
-    return res.status(201).json(instanceToPlain(newUser));
+    return res.status(201).json(newUser);
   }
 
   static async index(req: Request, res: Response) {
     const listUsers = await listUsersService();
 
-    return res.status(200).json(instanceToPlain(listUsers));
+    return res.status(200).json(listUsers);
   }
 
   static async show(req: Request, res: Response) {
@@ -47,15 +45,12 @@ class UserController {
 
     const user = await showUserService({ user_id });
 
-    return res.status(200).json(instanceToPlain(user));
+    return res.status(200).json(user);
   }
 
   static async update(req: Request, res: Response) {
     const { user_id } = req.params;
-    const { name, email, cpf, cel, birth_date, description, password } =
-      req.body;
-
-    if (cpf) throw new AppError("Cannot update CPF.", 400);
+    const { name, email, cel, birth_date, description, password } = req.body;
 
     const userUpdated = await updateUserService(user_id, {
       name,
