@@ -4,11 +4,12 @@ import createVehicleService from "../../services/vehicles/createVehicle.service"
 import deleteVehicleService from "../../services/vehicles/deleteVehicle.service";
 import getOneVechileService from "../../services/vehicles/getOneVehicle.service";
 import listVehiclesService from "../../services/vehicles/getVehicle.service";
-import ListVehiclesService from "../../services/vehicles/getVehicle.service";
 import updateVehilceService from "../../services/vehicles/updateVehicle.service";
 
 class VehicleController {
   static async create(req: Request, res: Response) {
+    const { userId } = req.user;
+
     const {
       title,
       type_of_ad,
@@ -24,26 +25,27 @@ class VehicleController {
       gallery_image4,
       gallery_image5,
       gallery_image6,
-      owner
     } = req.body;
 
-    const newVehicle = await createVehicleService({
-      title,
-      type_of_ad,
-      cover_image,
-      description,
-      gallery_image,
-      gallery_image2,
-      gallery_image3,
-      gallery_image4,
-      gallery_image5,
-      gallery_image6,
-      km,
-      price,
-      type_of_vehicle,
-      year,
-      owner
-    });
+    const newVehicle = await createVehicleService(
+      {
+        title,
+        type_of_ad,
+        cover_image,
+        description,
+        gallery_image,
+        gallery_image2,
+        gallery_image3,
+        gallery_image4,
+        gallery_image5,
+        gallery_image6,
+        km,
+        price,
+        type_of_vehicle,
+        year,
+      },
+      userId
+    );
 
     return res.status(201).json(newVehicle);
   }

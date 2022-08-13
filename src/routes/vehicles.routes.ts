@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { expressYupMiddleware } from "express-yup-middleware";
 import VehicleController from "../controllers/vehicles/vehicles.controller";
+import AuthToken from "../middlewares/isAuthToken.middleware";
+import IsOwner from "../middlewares/isOwnerOfVehicle.middleware";
 import { createVehicleSchema } from "../schemas/createVehicle.schema";
 import { updateVehicleSchema } from "../schemas/updateVehicle.schema";
 
@@ -10,6 +12,7 @@ export const vehicleRouter = () => {
   router.post(
     "",
     expressYupMiddleware({ schemaValidator: createVehicleSchema }),
+    AuthToken,
     VehicleController.create
   );
   router.get("", VehicleController.index);
@@ -18,10 +21,12 @@ export const vehicleRouter = () => {
   router.patch(
     "/:id",
     expressYupMiddleware({ schemaValidator: updateVehicleSchema }),
+    AuthToken,
+    IsOwner,
     VehicleController.update
   );
 
-  router.delete("/:id", VehicleController.delete);
+  router.delete("/:id", AuthToken, IsOwner, VehicleController.delete);
 
   return router;
 };
