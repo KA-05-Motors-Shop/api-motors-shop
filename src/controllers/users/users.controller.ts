@@ -32,7 +32,7 @@ class UserController {
       password,
     });
 
-    return res.status(201).json(newUser);
+    return res.status(201).json(instanceToPlain(newUser));
   }
 
   static async index(req: Request, res: Response) {
