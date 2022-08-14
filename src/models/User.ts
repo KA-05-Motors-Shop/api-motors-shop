@@ -8,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import Address from "./Address";
+import Comment from "./Comment";
 import Vehicle from "./Vehicle";
 
 @Entity("users")
@@ -57,6 +58,14 @@ class User {
   })
   @JoinColumn()
   vehicles: Vehicle[];
+
+  @OneToMany(() => Comment, (comments) => comments.user,{
+    eager: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  })
+  @JoinColumn()
+  comments: Comment[]
 }
 
 export default User;
