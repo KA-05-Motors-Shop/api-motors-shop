@@ -1,19 +1,10 @@
-import Comment from "../models/Comment";
 import Vehicle from "../models/Vehicle";
-import { formatedCommentResponse } from "./formatedCommentResponse";
 
 interface Props {
   vehicle: Vehicle;
-  comments: Comment[];
 }
 
-export const formatedResponse = ({ vehicle, comments }: Props) => {
-  const messages = comments.map((comment) => {
-    if (comment.vehicle.id === vehicle.id) {
-      return formatedCommentResponse({ comment });
-    }
-  });
-
+export const formatedCreateVehicle = ({ vehicle }: Props) => {
   const formatedVehicle = {
     id: vehicle.id,
     title: vehicle.title,
@@ -35,7 +26,6 @@ export const formatedResponse = ({ vehicle, comments }: Props) => {
       id: vehicle.user.id,
       name: vehicle.user.name,
     },
-    comments: messages.filter((message) => message != undefined),
   };
 
   return formatedVehicle;
