@@ -4,6 +4,7 @@ import { CreateComment } from "../../interfaces/comments";
 import Comment from "../../models/Comment";
 import User from "../../models/User";
 import Vehicle from "../../models/Vehicle";
+import { formatedCommentResponse } from "../../utils/formatedCommentResponse";
 
 const createCommentService = async (
   data: CreateComment,
@@ -22,18 +23,18 @@ const createCommentService = async (
     where: { id: vehicle_id },
   });
 
-  if (!vehicle) throw new AppError('Vehicle not found', 404)
+  if (!vehicle) throw new AppError("Vehicle not found", 404);
 
-  const comment = new Comment()
-  comment.message = data.message
-  comment.user = user
-  comment.vehicle = vehicle
+  const comment = new Comment();
+  comment.message = data.message;
+  comment.user = user;
+  comment.vehicle = vehicle;
 
-  commentRepository.create(comment)
+  commentRepository.create(comment);
 
-  await commentRepository.save(comment)
+  await commentRepository.save(comment);
 
-  return comment
+  return formatedCommentResponse({ comment });
 };
 
-export default createCommentService
+export default createCommentService;

@@ -3,6 +3,7 @@ import AppError from "../../errors/AppError";
 import { VehicleProps } from "../../interfaces/vehicles";
 import User from "../../models/User";
 import Vehicle from "../../models/Vehicle";
+import { formatedCreateVehicle } from "../../utils/formatedCreateVehicle";
 import { formatedResponse } from "../../utils/formatedResponse";
 
 const createVehicleService = async (data: VehicleProps, owner: string) => {
@@ -38,7 +39,7 @@ const createVehicleService = async (data: VehicleProps, owner: string) => {
 
   await vehicleRepository.save(vehicle);
 
-  return formatedResponse({ vehicle });
+  return formatedCreateVehicle({ vehicle });
 };
 
 export default createVehicleService;
