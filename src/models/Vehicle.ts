@@ -3,8 +3,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import Comment from "./Comment";
 import User from "./User";
 
 @Entity("vehicles")
@@ -19,6 +21,14 @@ class Vehicle {
   })
   @JoinColumn()
   user: User;
+
+  @OneToMany(() => Comment, (comment) => comment.vehicle ,{
+    eager: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  })
+  @JoinColumn()
+  comments: Comment[]
 
   @Column()
   title: string;

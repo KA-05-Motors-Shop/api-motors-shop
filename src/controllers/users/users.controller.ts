@@ -1,3 +1,4 @@
+import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import createUserService from "../../services/users/createUser.service";
 import deleteUserService from "../../services/users/deleteUser.service";
@@ -37,7 +38,8 @@ class UserController {
   static async index(req: Request, res: Response) {
     const listUsers = await listUsersService();
 
-    return res.status(200).json(listUsers);
+    
+    return res.status(200).json(instanceToPlain(listUsers));
   }
 
   static async show(req: Request, res: Response) {
@@ -45,7 +47,7 @@ class UserController {
 
     const user = await showUserService({ user_id });
 
-    return res.status(200).json(user);
+    return res.status(200).json(instanceToPlain(user));
   }
 
   static async update(req: Request, res: Response) {
@@ -61,7 +63,7 @@ class UserController {
       password,
     });
 
-    return res.status(200).json(userUpdated);
+    return res.status(200).json(instanceToPlain(userUpdated));
   }
 
   static async delete(req: Request, res: Response) {
