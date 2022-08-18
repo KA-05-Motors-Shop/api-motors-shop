@@ -41,6 +41,10 @@ export const formatedUserResponse = ({ user }: Props) => {
         gallery_image5: vehicle.gallery_image5,
         gallery_image6: vehicle.gallery_image6,
         published: vehicle.published,
+        owner: {
+          id: user.id,
+          name: user.name,
+        },
       };
     }),
     my_comments: user.comments.map((comment) => {
