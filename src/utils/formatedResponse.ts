@@ -34,6 +34,8 @@ export const formatedResponse = ({ vehicle, comments }: Props) => {
     owner: {
       id: vehicle.user.id,
       name: vehicle.user.name,
+      description: vehicle.user.description,
+      cel: vehicle.user.cel
     },
     comments: messages.filter((message) => message != undefined),
   };
