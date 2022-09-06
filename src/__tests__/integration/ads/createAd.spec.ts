@@ -3,7 +3,7 @@ import { AppDataSource } from "../../../data-source";
 import request from "supertest";
 import app from "../../../app";
 import { mockedLoginUser1, mockedUser1 } from "../../mocks/user";
-import { mockedAd1, mockedAdFailed } from "../../mocks/ads";
+import { mockedAd1, mockedAdFailed, mockedAdFailed2 } from "../../mocks/ads";
 
 describe("Test to create an ad ", () => {
   let connection: DataSource;
@@ -79,5 +79,18 @@ describe("Test to create an ad ", () => {
     expect(res.status).toBe(400);
     expect(res.body).toHaveProperty("message");
     expect(res.body.message).toEqual("Invalid token");
+  });
+
+  test("ERROR - Not able to create an ad without a title", async () => {
+    const res = await request(app)
+      .post("/vehicles")
+      .send(mockedAdFailed2)
+      .set({ Authorization: token });
+      
+    expect(res.status).toBe(400)
+    expect(res.body.errors.body[0]).toHaveProperty('message')
+    expect(res.body.errors.body[0]).toHaveProperty('propertyPath')
+    expect(res.body.errors.body[0].message).toEqual('This field is required')
+    expect(res.body.errors.body[0].propertyPath).toEqual('title')
   });
 });
