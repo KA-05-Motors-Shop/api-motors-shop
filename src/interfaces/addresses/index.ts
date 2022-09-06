@@ -4,7 +4,7 @@ export interface IAddressCreate {
   city: string;
   street: string;
   number: string;
-  complement: string;
+  complement?: string;
 }
 
 export interface IAddressUpdate {

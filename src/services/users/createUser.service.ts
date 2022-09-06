@@ -13,12 +13,22 @@ const createUserService = async (data: IUserCreate) => {
     where: { cpf: data.cpf },
   });
 
+  if (checkCPFExists)
+    throw new AppError("CPF already exists", 403);
+
   const checkEmailExists = await userRepository.findOne({
     where: { email: data.email },
   });
 
-  if (checkCPFExists || checkEmailExists)
-    throw new AppError("User already exists.", 401);
+  if (checkEmailExists)
+    throw new AppError("Email already exists.", 403);
+
+  const checkCelExists = await userRepository.findOne({
+    where: { cel: data.cel },
+  });
+
+  if (checkCelExists)
+    throw new AppError("Celphone already exists.", 403);
 
   const hashedPassword = await hash(data.password, 8);
 
@@ -28,7 +38,7 @@ const createUserService = async (data: IUserCreate) => {
   newAddress.city = data.address.city;
   newAddress.street = data.address.street;
   newAddress.number = data.address.number;
-  newAddress.complement = data.address.complement;
+  newAddress.complement = data.address.complement!;
 
   addressRepository.create(newAddress);
 
