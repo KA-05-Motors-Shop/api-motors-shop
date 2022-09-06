@@ -29,7 +29,7 @@ export const mockedAd2: VehicleProps = {
 };
 
 export const mockedAdFailed: VehicleProps = {
-    title: "Anuncio teste 2",
+    title: "Anuncio teste",
     description: "Descrição teste 2",
     price: 50000,
     km: 1000,

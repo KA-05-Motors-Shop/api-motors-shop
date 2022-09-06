@@ -14,21 +14,21 @@ const createUserService = async (data: IUserCreate) => {
   });
 
   if (checkCPFExists)
-    throw new AppError("CPF already exists", 403);
+    throw new AppError("CPF already exists", 409);
 
   const checkEmailExists = await userRepository.findOne({
     where: { email: data.email },
   });
 
   if (checkEmailExists)
-    throw new AppError("Email already exists.", 403);
+    throw new AppError("Email already exists.", 409);
 
   const checkCelExists = await userRepository.findOne({
     where: { cel: data.cel },
   });
 
   if (checkCelExists)
-    throw new AppError("Celphone already exists.", 403);
+    throw new AppError("Celphone already exists.", 409);
 
   const hashedPassword = await hash(data.password, 8);
 
