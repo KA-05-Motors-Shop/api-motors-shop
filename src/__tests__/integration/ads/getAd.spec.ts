@@ -53,11 +53,6 @@ describe("Test to list one ad ", () => {
   });
 
   test("ERROR - Not able to list an ad with invalid uuid", async () => {
-    await request(app)
-      .post("/vehicles")
-      .send(mockedAd1)
-      .set({ Authorization: `Bearer ${token}` });
-
     const res = await request(app).get(`/vehicles/1`);
 
     expect(res.status).toBe(422);
@@ -66,11 +61,6 @@ describe("Test to list one ad ", () => {
   });
 
   test("ERROR - Not able to list a non-existent ad", async () => {
-    await request(app)
-      .post("/vehicles")
-      .send(mockedAd1)
-      .set({ Authorization: `Bearer ${token}` });
-
     const res = await request(app).get(
       `/vehicles/c6e5958c-f8b5-4a3a-8a4a-908089a3c8b2`
     );
