@@ -4,7 +4,7 @@ import createVehicleService from "../../services/vehicles/createVehicle.service"
 import deleteVehicleService from "../../services/vehicles/deleteVehicle.service";
 import getOneVechileService from "../../services/vehicles/getOneVehicle.service";
 import listVehiclesService from "../../services/vehicles/getVehicle.service";
-import updateVehilceService from "../../services/vehicles/updateVehicle.service";
+import updateVehicleService from "../../services/vehicles/updateVehicle.service";
 
 class VehicleController {
   static async create(req: Request, res: Response) {
@@ -84,7 +84,7 @@ class VehicleController {
       published,
     } = req.body;
 
-    const vehicleUpdate = await updateVehilceService(id, {
+    const vehicleUpdate = await updateVehicleService(id, {
       title,
       type_of_ad,
       cover_image,
