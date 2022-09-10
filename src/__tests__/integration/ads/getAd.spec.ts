@@ -28,7 +28,7 @@ describe("Test to list one ad ", () => {
     await connection.destroy();
   });
 
-  test("GET - Must be able to list all ads", async () => {
+  test("GET - Must be able to list one ad", async () => {
     const ad = await request(app)
       .post("/vehicles")
       .send(mockedAd1)
