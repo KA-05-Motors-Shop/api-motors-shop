@@ -15,7 +15,7 @@ export const ValidationId = (
     throw new AppError("This user id is not valid", 422);
 
   if (vehicle_id && !validationId(vehicle_id))
-    throw new AppError("This vehicle id is not");
+    throw new AppError("This vehicle id is not valid");
 
   return next();
 };
