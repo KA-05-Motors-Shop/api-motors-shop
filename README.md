@@ -17,5 +17,5 @@
 - https://motorsshop-api.herokuapp.com/
 
 ## Documentação
-<a href="https://motorsshop-api.herokuapp.com/doc/" target="_blank">Visitar documentação<a/>
+- <a href="https://motorsshop-api.herokuapp.com/doc/" target="_blank">Visitar documentação<a/>
 
