@@ -5,6 +5,7 @@
 
 ## Tecnologias utilizadas
 - NodeJs
+- Express
 - Typescript
 - TypeORM
 - PostgreSQL
@@ -17,5 +18,5 @@
 - https://motorsshop-api.herokuapp.com/
 
 ## Documentação
-- <a href="https://motorsshop-api.herokuapp.com/doc/" target="_blank">Visitar documentação<a/>
+<a href="https://motorsshop-api.herokuapp.com/doc/" target="_blank">Visitar documentação<a/>
 
