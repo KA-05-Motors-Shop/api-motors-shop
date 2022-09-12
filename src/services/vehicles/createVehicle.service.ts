@@ -4,7 +4,6 @@ import { VehicleProps } from "../../interfaces/vehicles";
 import User from "../../models/User";
 import Vehicle from "../../models/Vehicle";
 import { formatedCreateVehicle } from "../../utils/formatedCreateVehicle";
-import { formatedResponse } from "../../utils/formatedResponse";
 
 const createVehicleService = async (data: VehicleProps, owner: string) => {
   const vehicleRepository = AppDataSource.getRepository(Vehicle);
@@ -14,11 +13,9 @@ const createVehicleService = async (data: VehicleProps, owner: string) => {
 
   if (!user) throw new AppError("User not found", 404);
 
-  const ad = await vehicleRepository.find();
+  const ad = await vehicleRepository.findOne({ where: { title: data.title } });
 
-  const vehicleAlreadExists = ad.find(({ title }) => title === data.title);
-
-  if (vehicleAlreadExists) throw new AppError("This title already exists", 409);
+  if (ad) throw new AppError("This title already exists", 409);
 
   const vehicle = new Vehicle();
   vehicle.title = data.title;

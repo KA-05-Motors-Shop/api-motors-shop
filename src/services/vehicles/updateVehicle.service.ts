@@ -3,7 +3,7 @@ import AppError from "../../errors/AppError";
 import { VehicleUpdateProps } from "../../interfaces/vehicles";
 import Vehicle from "../../models/Vehicle";
 
-const updateVehilceService = async (id: string, data: VehicleUpdateProps) => {
+const updateVehicleService = async (id: string, data: VehicleUpdateProps) => {
   const vehicleRepository = AppDataSource.getRepository(Vehicle);
 
   const ad = await vehicleRepository.findOne({ where: { id } });
@@ -18,4 +18,4 @@ const updateVehilceService = async (id: string, data: VehicleUpdateProps) => {
   return { message: "Updated ad" };
 };
 
-export default updateVehilceService;
+export default updateVehicleService;

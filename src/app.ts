@@ -5,6 +5,8 @@ import cors from "cors";
 import errorHandling from "./middlewares/errorHandling.middleware";
 import express from "express";
 import { appRoutes } from "./routes";
+import { serve, setup } from "swagger-ui-express";
+const swaggerFile = require("../swagger.json");
 
 const app = express();
 
@@ -14,5 +16,5 @@ app.use(express.json());
 appRoutes(app);
 
 app.use(errorHandling);
-
+app.use("/doc", serve, setup(swaggerFile));
 export default app;
