@@ -12,6 +12,7 @@
 - Jest
 - JWT
 - Bcrypt
+- Yup
 - Swagger
 
 ## Base URL
