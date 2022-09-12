@@ -3,184 +3,15 @@
   "info": {
     "version": "1.0.0",
     "title": "Motors Shop API",
-    "description": ""
+    "description": "API para vendas e leilões da automoveis"
   },
-  "host": "localhost:3000",
+  "host": "https://motorsshop-api.herokuapp.com",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
   "paths": {
-    "/vehicles": {
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "string"
-                },
-                "type_of_ad": {
-                  "example": "string"
-                },
-                "year": {
-                  "example": "number"
-                },
-                "km": {
-                  "example": "number"
-                },
-                "price": {
-                  "example": "number"
-                },
-                "description": {
-                  "example": "string"
-                },
-                "type_of_vehicle": {
-                  "example": "string"
-                },
-                "cover_image": {
-                  "example": "url"
-                },
-                "gallery_image": {
-                  "example": "url"
-                },
-                "gallery_image2": {
-                  "example": "url"
-                },
-                "gallery_image3": {
-                  "example": "url"
-                },
-                "gallery_image4": {
-                  "example": "url"
-                },
-                "gallery_image5": {
-                  "example": "url"
-                },
-                "gallery_image6": {
-                  "example": "url"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/vehicles/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "patch": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "type_of_ad": {
-                  "example": "any"
-                },
-                "year": {
-                  "example": "any"
-                },
-                "km": {
-                  "example": "any"
-                },
-                "price": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "type_of_vehicle": {
-                  "example": "any"
-                },
-                "cover_image": {
-                  "example": "any"
-                },
-                "gallery_image": {
-                  "example": "any"
-                },
-                "gallery_image2": {
-                  "example": "any"
-                },
-                "gallery_image3": {
-                  "example": "any"
-                },
-                "gallery_image4": {
-                  "example": "any"
-                },
-                "gallery_image5": {
-                  "example": "any"
-                },
-                "gallery_image6": {
-                  "example": "any"
-                },
-                "published": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
-      }
-    },
     "/users": {
       "post": {
         "description": "",
+        "tags": ["Users"],
         "parameters": [
           {
             "name": "body",
@@ -189,31 +20,37 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "cpf": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "cel": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "birth_date": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "address": {
-                  "example": "any"
+                  "example": {
+                    "cep": "string",
+                    "state": "string",
+                    "city": "string",
+                    "number": "string",
+                    "complement": "string"
+                  }
                 },
                 "account_type": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -221,7 +58,58 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Created",
+            "schema": {
+              "example": {
+                "name": "string",
+                "email": "string",
+                "cpf": "string",
+                "cel": "string",
+                "birth_date": "string",
+                "description": "string",
+                "account_type": "string",
+                "address": {
+                  "id": "f09d0b05-eefa-484b-95cf-76e60e44833d",
+                  "cep": "string",
+                  "state": "string",
+                  "city": "string",
+                  "street": "string",
+                  "number": "string",
+                  "complement": null
+                },
+                "id": "6df5a294-9da7-4eba-ad0c-970322c294f3"
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "example": {
+                "message": [
+                  "CPF already exists",
+                  "Email already exists",
+                  "Celphone already exists"
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Address not found"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -229,6 +117,7 @@
     "/users/{user_id}": {
       "get": {
         "description": "",
+        "tags": ["Users"],
         "parameters": [
           {
             "name": "user_id",
@@ -240,11 +129,30 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "User not found"
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This user id is not valid"
+              }
+            }
           }
         }
       },
       "patch": {
         "description": "",
+        "tags": ["Users"],
         "parameters": [
           {
             "name": "user_id",
@@ -259,22 +167,22 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "cel": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "birth_date": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -282,12 +190,37 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "example": {
+                "name": "new name",
+                "id": "ae81ae03-319e-4f9e-ae6a-8b0c2770aa80"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "User not found"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthotized",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "E-mail already in use"
+              }
+            }
           }
         }
       },
       "delete": {
         "description": "",
+        "tags": ["Users"],
         "parameters": [
           {
             "name": "user_id",
@@ -299,6 +232,15 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "User not found"
+              }
+            }
           }
         }
       }
@@ -306,6 +248,7 @@
     "/users/{user_id}/address": {
       "patch": {
         "description": "",
+        "tags": ["Users"],
         "parameters": [
           {
             "name": "user_id",
@@ -320,22 +263,22 @@
               "type": "object",
               "properties": {
                 "cep": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "state": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "city": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "street": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "number": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "complement": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -343,14 +286,31 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "example": {
+                "street": "new string",
+                "id": "e7fd23b8-02aa-4a63-a4a1-5eb819f406b9"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": ["User not found", "Address not found"]
+              }
+            }
           }
         }
       }
     },
-    "/login": {
+    "/vehicles": {
       "post": {
         "description": "",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "body",
@@ -358,11 +318,258 @@
             "schema": {
               "type": "object",
               "properties": {
-                "email": {
-                  "example": "any"
+                "title": {
+                  "example": "string"
                 },
-                "password": {
-                  "example": "any"
+                "type_of_ad": {
+                  "example": "string"
+                },
+                "year": {
+                  "example": "number"
+                },
+                "km": {
+                  "example": "number"
+                },
+                "price": {
+                  "example": "number"
+                },
+                "description": {
+                  "example": "string"
+                },
+                "type_of_vehicle": {
+                  "example": "string"
+                },
+                "cover_image": {
+                  "example": "url"
+                },
+                "gallery_image": {
+                  "example": "url"
+                },
+                "gallery_image2": {
+                  "example": "url"
+                },
+                "gallery_image3": {
+                  "example": "url"
+                },
+                "gallery_image4": {
+                  "example": "url"
+                },
+                "gallery_image5": {
+                  "example": "url"
+                },
+                "gallery_image6": {
+                  "example": "url"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "example": {
+                "id": "aa741e51-a216-41c1-9659-75d9a4bdde85",
+                "title": "string",
+                "type_of_ad": "string",
+                "type_of_vehicle": "string",
+                "year": "number",
+                "km": "number",
+                "price": "number",
+                "description": "string",
+                "cover_image": "url",
+                "gallery_image": "url",
+                "gallery_image2": "url",
+                "gallery_image3": null,
+                "gallery_image4": null,
+                "gallery_image5": null,
+                "gallery_image6": null,
+                "published": "boolean",
+                "owner": {
+                  "id": "fed6218a-5303-4c97-a989-12ebbd781d63",
+                  "name": "User name"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "example": {
+                "message": "User not found"
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "example": {
+                "message": "This title is already exists"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "tags": ["Vehicles"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "id": "aa741e51-a216-41c1-9659-75d9a4bdde85",
+                  "title": "string",
+                  "type_of_ad": "string",
+                  "type_of_vehicle": "string",
+                  "year": "number",
+                  "km": "number",
+                  "price": "number",
+                  "description": "string",
+                  "cover_image": "url",
+                  "gallery_image": "url",
+                  "gallery_image2": "url",
+                  "gallery_image3": null,
+                  "gallery_image4": null,
+                  "gallery_image5": null,
+                  "gallery_image6": null,
+                  "published": "boolean",
+                  "owner": {
+                    "id": "fed6218a-5303-4c97-a989-12ebbd781d63",
+                    "name": "User name"
+                  },
+                  "comments": []
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+
+    "/vehicles/{id}": {
+      "get": {
+        "description": "",
+        "tags": ["Vehicles"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": {
+                "id": "string",
+                "title": "string",
+                "type_of_ad": "string",
+                "type_of_vehicle": "string",
+                "year": "number",
+                "km": "number",
+                "price": "number",
+                "description": "string",
+                "cover_image": "url",
+                "gallery_image": "url",
+                "gallery_image2": "url",
+                "gallery_image3": null,
+                "gallery_image4": null,
+                "gallery_image5": null,
+                "gallery_image6": null,
+                "published": "boolean",
+                "owner": {
+                  "id": "ae81ae03-319e-4f9e-ae6a-8b0c2770aa80",
+                  "name": "User name"
+                },
+                "comments": []
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Vehicle not found"
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This id is not valid"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "string"
+                },
+                "type_of_ad": {
+                  "example": "string"
+                },
+                "year": {
+                  "example": "number"
+                },
+                "km": {
+                  "example": "number"
+                },
+                "price": {
+                  "example": "number"
+                },
+                "description": {
+                  "example": "string"
+                },
+                "type_of_vehicle": {
+                  "example": "string"
+                },
+                "cover_image": {
+                  "example": "url"
+                },
+                "gallery_image": {
+                  "example": "url"
+                },
+                "gallery_image2": {
+                  "example": "url"
+                },
+                "gallery_image3": {
+                  "example": "url"
+                },
+                "gallery_image4": {
+                  "example": "url"
+                },
+                "gallery_image5": {
+                  "example": "url"
+                },
+                "gallery_image6": {
+                  "example": "url"
+                },
+                "published": {
+                  "example": "boolean"
                 }
               }
             }
@@ -370,7 +577,67 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Updated Ad"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Vehicle not found"
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This id is not valid"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "tags": ["Vehicles"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Vehicle not found"
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This id is not valid"
+              }
+            }
           }
         }
       }
@@ -378,6 +645,8 @@
     "/comments/{vehicle_id}": {
       "post": {
         "description": "",
+        "tags": ["Comments"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "vehicle_id",
@@ -392,7 +661,7 @@
               "type": "object",
               "properties": {
                 "message": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -400,7 +669,56 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Created",
+            "schema": {
+              "example": {
+                "id": "c6fe2cfc-d037-46e9-9e5e-7addf24ae84b",
+                "message": "Message",
+                "created_at": "2022-08-18T20:31:35.913Z",
+                "owner": {
+                  "id": "fed6218a-5303-4c97-a989-12ebbd781d63",
+                  "name": "User name"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": ["User not found", "Vehicle not found"]
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This user id is not valid"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comments": {
+      "get": {
+        "description": "",
+        "tags": ["Comments"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "id": "83446c97-65b2-49ac-9191-f19b61fb3a9a",
+                  "message": "Message",
+                  "created_at": "2022-08-14T20:11:59.631Z"
+                }
+              ]
+            }
           }
         }
       }
@@ -408,6 +726,7 @@
     "/comments/{id}": {
       "get": {
         "description": "",
+        "tags": ["Comments"],
         "parameters": [
           {
             "name": "id",
@@ -418,12 +737,39 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "example": {
+                "id": "83446c97-65b2-49ac-9191-f19b61fb3a9a",
+                "message": "Message",
+                "created_at": "2022-08-14T20:11:59.631Z"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Comment not found"
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This id is not valid"
+              }
+            }
           }
         }
       },
       "patch": {
         "description": "",
+        "tags": ["Comments"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -438,7 +784,7 @@
               "type": "object",
               "properties": {
                 "message": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -446,12 +792,38 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Comment updated"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Comment not found"
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This id is not valid"
+              }
+            }
           }
         }
       },
       "delete": {
         "description": "",
+        "tags": ["Comments"],
+        "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -463,6 +835,65 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "Comment not found"
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid Argument",
+            "schema": {
+              "type": "object",
+              "example": {
+                "message": "This id is not valid"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "tags": ["Login"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "string"
+                },
+                "password": {
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "example": {
+                "message": "Invalid credentials"
+              }
+            }
           }
         }
       }
