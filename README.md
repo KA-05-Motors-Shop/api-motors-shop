@@ -33,6 +33,6 @@
 
   Para verificar se já possui o gerenciador yarn instalado utilize o seguinte comando:
   
-    ```bash
-    yarn --version
-  ```
+```bash
+   yarn --version
+```
