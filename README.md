@@ -22,3 +22,10 @@
 ## Documentação
 - <a href="https://motorsshop-api.herokuapp.com/doc/" target="_blank">Visitar documentação<a/>
 
+## Instalação
+
+  Para inciar este projeto, é necessário instalar as dependências.Portanto utilize o comando abaixo para instalar tais dependências
+  
+  ```bash
+    yarn install
+  ```
