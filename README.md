@@ -36,3 +36,8 @@
 ```bash
    yarn --version
 ```
+  Caso não possua o yarn instalado, utilize o comando abaixo para instalar globalmente na sua máquina:
+  
+```bash
+   npm install --global yarn
+```
