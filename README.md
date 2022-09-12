@@ -4,16 +4,17 @@
 - API para vendas e leilões da automoveis
 
 ## Tecnologias utilizadas
-<img src="https://img.shields.io/badge/-nodejs-339933?logo=node.js&logoColor=white&style=for-the-badge" />
-<img src="https://img.shields.io/badge/-express-000000?logo=express&logoColor=white&style=for-the-badge" />
-<img src="https://img.shields.io/badge/-typescrypt-3178C6?logo=typescript&logoColor=white&style=for-the-badge" />
-<img src="https://img.shields.io/badge/-typeorm-FE0902?logo=typescript&logoColor=white&style=for-the-badge" />
-<img src="https://img.shields.io/badge/-postgresql-4169E1?logo=postgresql&logoColor=white&style=for-the-badge" />
-<img src="https://img.shields.io/badge/-jwt-000000?logo=JSON Web Tokens&logoColor=white&style=for-the-badge" />
-<img src="https://img.shields.io/badge/bcript-yellow?style=for-the-badge&logo=bcrypt&logoColor=white"/>
-<img src="https://img.shields.io/badge/class%20transformer-purple?style=for-the-badge&logo=class-transformer&logoColor=white"/>
-<img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white"/>
-
+<div display="flex">
+  <img src="https://img.shields.io/badge/-nodejs-339933?logo=node.js&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/-express-000000?logo=express&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/-typescrypt-3178C6?logo=typescript&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/-typeorm-FE0902?logo=typescript&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/-postgresql-4169E1?logo=postgresql&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/-jwt-000000?logo=JSON Web Tokens&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/bcrypt-yellow?style=for-the-badge&logo=bcrypt&logoColor=white"/>
+  <img src="https://img.shields.io/badge/class%20transformer-purple?style=for-the-badge&logo=class-transformer&logoColor=white"/>
+  <img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white"/>
+</div>
 
 ## Base URL
 - https://motorsshop-api.herokuapp.com/
