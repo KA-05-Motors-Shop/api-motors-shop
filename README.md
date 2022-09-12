@@ -62,4 +62,24 @@
   
   Já na subpasta ```mocks``` estão os dados que serão utilizados para os testes.
   
+## Rodando os testes
+  
+  Para rodar os testes é necessário que no seu terminal, você esteja dentro do diretório do projeto.
+  
+# Rodar todos os testes
+  
+```bash
+  yarn test
+```  
+# Rodar todos os testes e ter um log ainda mais completo
+ 
+```bash
+  yarn test --all
+```  
+# Rodar os testes de uma pasta específica
+  
+```bash
+  yarn test ./src/__tests__/integration/<subpasta>
+  yarn test ./src/__tests__/unit/<subpasta>
+``` 
   
