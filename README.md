@@ -24,8 +24,15 @@
 
 ## Instalação
 
-  Para inciar este projeto, é necessário instalar as dependências.Portanto utilize o comando abaixo para instalar tais dependências
+  Para inciar esta aplicação, é necessário instalar as dependências.Portanto utilize o comando abaixo para instalar tais dependências
   
   ```bash
     yarn install
+  ```
+  Atenção: é necessário utilizar o yarn pois esse projeto foi iniciado com esse gerenciador de pacotes.
+
+  Para verificar se já possui o gerenciador yarn instalado utilize o seguinte comando:
+  
+    ```bash
+    yarn --version
   ```
