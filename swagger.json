@@ -11,6 +11,7 @@
     "/users": {
       "post": {
         "description": "",
+        "summary": "Criação de um usuário",
         "tags": ["Users"],
         "parameters": [
           {
@@ -106,6 +107,7 @@
       },
       "get": {
         "description": "",
+        "summary": "Listar todos os usuários",
         "tags": ["Users"],
         "responses": {
           "200": {
@@ -117,6 +119,7 @@
     "/users/{user_id}": {
       "get": {
         "description": "",
+        "summary": "Listar um usuário",
         "tags": ["Users"],
         "parameters": [
           {
@@ -152,6 +155,7 @@
       },
       "patch": {
         "description": "",
+        "summary": "Atualizar um usuário",
         "tags": ["Users"],
         "parameters": [
           {
@@ -220,6 +224,7 @@
       },
       "delete": {
         "description": "",
+        "summary": "Deletar um usuário",
         "tags": ["Users"],
         "parameters": [
           {
@@ -248,6 +253,7 @@
     "/users/{user_id}/address": {
       "patch": {
         "description": "",
+        "summary": "Atualizar o endereço de um usuário",
         "tags": ["Users"],
         "parameters": [
           {
@@ -308,7 +314,8 @@
     },
     "/vehicles": {
       "post": {
-        "description": "",
+        "description": "Necessario estar logado",
+        "summary": "Criar um anúncio",
         "tags": ["Vehicles"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
@@ -412,6 +419,7 @@
       },
       "get": {
         "description": "",
+        "summary": "Listar todos os anúncios",
         "tags": ["Vehicles"],
         "responses": {
           "200": {
@@ -451,6 +459,7 @@
     "/vehicles/{id}": {
       "get": {
         "description": "",
+        "summary": "Listar um anúncio",
         "tags": ["Vehicles"],
         "parameters": [
           {
@@ -510,7 +519,8 @@
         }
       },
       "patch": {
-        "description": "",
+        "description": "Necessario estar logado",
+        "summary": "Atualizar um anúncio",
         "tags": ["Vehicles"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
@@ -606,7 +616,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Necessario estar logado",
+        "summary": "Deletar um anúncio",
         "tags": ["Vehicles"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
@@ -644,8 +655,9 @@
     },
     "/comments/{vehicle_id}": {
       "post": {
-        "description": "",
+        "description": "Necessario estar logado",
         "tags": ["Comments"],
+        "summary": "Criar um comentário",
         "security": [{ "bearerAuth": [] }],
         "parameters": [
           {
@@ -706,6 +718,7 @@
     "/comments": {
       "get": {
         "description": "",
+        "summary": "Listar todos os comentários",
         "tags": ["Comments"],
         "responses": {
           "200": {
@@ -726,6 +739,7 @@
     "/comments/{id}": {
       "get": {
         "description": "",
+        "summary": "Listar um comentário",
         "tags": ["Comments"],
         "parameters": [
           {
@@ -767,7 +781,8 @@
         }
       },
       "patch": {
-        "description": "",
+        "description": "Necessario estar logado",
+        "summary": "Atualizar um comentário",
         "tags": ["Comments"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
@@ -821,7 +836,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Necessario estar logado",
+        "summary": "Deletar um comentário",
         "tags": ["Comments"],
         "security": [{ "bearerAuth": [] }],
         "parameters": [
@@ -860,6 +876,7 @@
     "/login": {
       "post": {
         "description": "",
+        "summary": "Fazer login",
         "tags": ["Login"],
         "parameters": [
           {
