@@ -13,6 +13,7 @@
 - JWT
 - Bcrypt
 - Yup
+- Class-Transformer
 - Swagger
 
 ## Base URL
