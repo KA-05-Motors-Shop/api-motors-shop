@@ -41,3 +41,12 @@
 ```bash
    npm install --global yarn
 ```
+## Rodando a aplicação
+  
+  Configure as variáveis de ambiente no seu .env, passando as credenciais corretas para conectar em seu banco local.
+  
+  Com isso feito, para rodar sua aplicação, basta utilizar o comando:
+  
+```bash
+  yarn dev 
+```
