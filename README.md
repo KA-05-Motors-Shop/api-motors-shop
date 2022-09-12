@@ -10,6 +10,7 @@
   <img src="https://img.shields.io/badge/-typescrypt-3178C6?logo=typescript&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/-typeorm-FE0902?logo=typescript&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/-postgresql-4169E1?logo=postgresql&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white"/>
   <img src="https://img.shields.io/badge/-jwt-000000?logo=JSON Web Tokens&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/bcrypt-yellow?style=for-the-badge&logo=bcrypt&logoColor=white"/>
   <img src="https://img.shields.io/badge/class%20transformer-purple?style=for-the-badge&logo=class-transformer&logoColor=white"/>
