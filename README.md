@@ -50,3 +50,16 @@
 ```bash
   yarn dev 
 ```
+  
+## Testes
+  Essa aplicação possui testes, que serão utilizados para validar se todas as regras de negócio foram aplicadas de maneira correta.
+  
+  Os testes estão localizados em ```src/__tests__```.
+  
+  Na subpasta ```integration``` estão os testes de integração.
+  
+  Na subpasta ```unit``` estão os testes unitários.
+  
+  Já na subpasta ```mocks``` estão os dados que serão utilizados para os testes.
+  
+  
